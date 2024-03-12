@@ -149,6 +149,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+*{
+  font-family: Montserrat;
+}
+
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -276,7 +280,7 @@ p {
           .benchmark-checkbox-label {
             color: #1a2128;
             text-align: center;
-            font-family: Montserrat;
+            /* font-family: Montserrat; */
             font-size: 14px;
             font-style: normal;
             font-weight: 600;

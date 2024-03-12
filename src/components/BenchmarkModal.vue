@@ -201,6 +201,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+*{
+  font-family: Montserrat !important;
+}
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -245,10 +248,10 @@ p {
       gap: 16px;
 
       .benchmark-modal-top_badge {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 4px 8px;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* padding: 4px 8px; */
         border-radius: 28px;
         gap: 10px;
         background-color: #e2fdec;
@@ -257,6 +260,8 @@ p {
         line-height: 15px;
         letter-spacing: 0em;
         text-align: center;
+        width: max-content;
+        padding: 8px 14px 8px 14px;
       }
 
       .benchmark-modal-top_text {
