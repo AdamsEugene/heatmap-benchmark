@@ -235,7 +235,7 @@ p {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 24px 16px;
+    padding: 24px ;
     border: 0;
     gap: 12px;
     border-bottom: 1px solid #cccfd2;
@@ -256,7 +256,7 @@ p {
         gap: 10px;
         background-color: #e2fdec;
         font-size: 12px;
-        font-weight: 700;
+        font-weight: bolder;
         line-height: 15px;
         letter-spacing: 0em;
         text-align: center;
