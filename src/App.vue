@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <benchmark-modal> </benchmark-modal>
-    <!-- <choose-how-notified></choose-how-notified> -->
+    <!-- <benchmark-modal> </benchmark-modal> -->
+    <choose-how-notified></choose-how-notified>
     <!-- <add-email></add-email> -->
     <!-- <reporting-frequency></reporting-frequency> -->
     <!-- <category-of-reports></category-of-reports> -->
