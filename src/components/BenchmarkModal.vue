@@ -295,7 +295,7 @@ p {
       flex: 1;
       /* padding: 20px; */
       &:not(:last-child) {
-        border-right: 1px solid #e6e7e8;
+        border-right: 2px solid #e6e7e8;
       }
 
       .benchmark-flex {
@@ -318,7 +318,8 @@ p {
         .benchmark-flex-card-text {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          /* gap: 10px; */
+          gap: 5px;
           padding: 10px;
           min-height: 100px;
 
@@ -367,7 +368,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    min-height: 80px;
     border-top: 1px solid #cccfd2;
 
     .benchmark-modal-button {
