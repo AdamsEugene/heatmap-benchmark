@@ -222,7 +222,7 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 750px;
+  width: 800px;
   min-height: 609px;
   border-radius: 10px;
   border-radius: 10px;
@@ -287,13 +287,13 @@ p {
 
   .benchmark-modal-body {
     display: flex;
-    padding: 32px 16px;
+    /* padding: 32px 16px; */
 
     .benchmark-flex-item {
       display: flex;
       justify-content: center;
       flex: 1;
-      padding: 20px;
+      /* padding: 20px; */
       &:not(:last-child) {
         border-right: 1px solid #e6e7e8;
       }
@@ -323,8 +323,8 @@ p {
           min-height: 100px;
 
           .benchmark-flex-card-head {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             line-height: 20px;
             letter-spacing: 0em;
             text-align: center;
