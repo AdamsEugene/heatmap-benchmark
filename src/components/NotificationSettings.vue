@@ -83,11 +83,6 @@
         </div>
         <div class="benchmark-modal-footer">
           <div class="benchmark-modal-footer-content">
-            <!-- <div class="benchmark-buttons">
-              <div class="benchmark-button benchmark-active"> 1. Set up contact </div>
-              <div class="benchmark-button">2. Report frequency</div>
-              <div class="benchmark-button">3. Select metrics</div>
-            </div> -->
             <button class="benchmark-modal-button">
               <span class="benchmark-modal-button-text">Save changes</span>
               <svg
