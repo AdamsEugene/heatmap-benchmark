@@ -64,6 +64,16 @@
       <benchmark-a-o-v :series="series" />
     </div>
   </div>
+
+  <div class="benchmark-table-wrapper">
+    <EasyDataTable
+      :headers="headers"
+      :items="items"
+      table-class-name="benchmark-customize-table"
+      header-text-direction="center"
+      body-text-direction="center"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -74,6 +84,8 @@ import BenchmarkAOV from "./BenchmarkAOV.vue";
 import ChangeSettings from "@/components/ChangeSettings.vue";
 import NotificationSettings from "./NotificationSettings.vue";
 import ConfirmationModal from "./ConfirmationModal.vue";
+import type { Header, Item } from "vue3-easy-data-table";
+import EasyDataTable from "vue3-easy-data-table";
 
 export default defineComponent({
   components: {
@@ -83,6 +95,7 @@ export default defineComponent({
     ChangeSettings,
     NotificationSettings,
     ConfirmationModal,
+    EasyDataTable,
   },
   data() {
     return {
@@ -145,6 +158,98 @@ export default defineComponent({
         enabled: `Mobile updates are now <strong>enabled</strong>. You will start receiving timely notifications on your mobile device for this activity.
 Stay in the loop and get the latest updates delivered straight to your phone`,
       },
+      headers: [
+        // { text: "Metric", value: "Metric", width: 200 },
+        { text: "Metric", value: "Metric" },
+        { text: "Previous week JB", value: "PreviousweekJB" },
+        { text: "Current week JB", value: "CurrentweekJB" },
+        { text: "Previous week Industry", value: "PreviousweekIndustry" },
+        { text: "Current week Industry", value: "CurrentweekIndustry" },
+        { text: "% Change JB", value: "ChangeJB" },
+        { text: "% Change Industry", value: "ChangeIndustry" },
+        {
+          text: "Relative Performance",
+          value: "RelativePerformance",
+          sortable: true,
+        },
+        { text: "Weighted Score", value: "WeightedScore" },
+        { text: "Final Score", value: "FinalScore" },
+      ],
+
+      items: [
+        {
+          Metric: "AOV",
+          PreviousweekJB: "$139.67",
+          CurrentweekJB: "$147.39",
+          PreviousweekIndustry: "$86.13",
+          CurrentweekIndustry: "$94.50",
+          ChangeJB: "5.53%",
+          ChangeIndustry: "9.72%",
+          RelativePerformance: "-4.19%",
+          WeightedScore: "15",
+          FinalScore: "-0.6292",
+        },
+        {
+          Metric: "Revenue per session",
+          PreviousweekJB: "$2.46",
+          CurrentweekJB: "$2.59",
+          PreviousweekIndustry: "$2.18",
+          CurrentweekIndustry: "$2.50",
+          ChangeJB: "5.28%",
+          ChangeIndustry: "14.68%",
+          RelativePerformance: "-9.39%",
+          WeightedScore: "25",
+          FinalScore: "-2.3486",
+        },
+        {
+          Metric: "Conversion Rate",
+          PreviousweekJB: "1.12",
+          CurrentweekJB: "1.20",
+          PreviousweekIndustry: "0.88",
+          CurrentweekIndustry: "0.90",
+          ChangeJB: "-1.05%",
+          ChangeIndustry: "2.28%",
+          RelativePerformance: "-3.33%",
+          WeightedScore: "20",
+          FinalScore: "-0.6652",
+        },
+        {
+          Metric: "Total revenue",
+          PreviousweekJB: "$10,095.36",
+          CurrentweekJB: "$11 274.49",
+          PreviousweekIndustry: "$7,558.94",
+          CurrentweekIndustry: "$9,456.66",
+          ChangeJB: "11.68%",
+          ChangeIndustry: "25.11%",
+          RelativePerformance: "-13.43%",
+          WeightedScore: "20",
+          FinalScore: "-2.6852",
+        },
+        {
+          Metric: "Total traffic",
+          PreviousweekJB: "5212.03",
+          CurrentweekJB: "5671.48",
+          PreviousweekIndustry: "3183.86",
+          CurrentweekIndustry: "3560.27",
+          ChangeJB: "8.82%",
+          ChangeIndustry: "11.82%",
+          RelativePerformance: "-3.01%",
+          WeightedScore: "15",
+          FinalScore: "-0.4511",
+        },
+        {
+          Metric: "Time on site ",
+          PreviousweekJB: "5.58",
+          CurrentweekJB: "6.17",
+          PreviousweekIndustry: "3.15",
+          CurrentweekIndustry: "3.34",
+          ChangeJB: "10.40%",
+          ChangeIndustry: "6.05%",
+          RelativePerformance: "4.35%",
+          WeightedScore: "5",
+          FinalScore: "0.2176",
+        },
+      ],
     };
   },
   methods: {
@@ -231,7 +336,25 @@ Stay in the loop and get the latest updates delivered straight to your phone`,
 
 .benchmark-grid-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 columns with equal width */
-  gap: 16px; /* Adjust the gap between items */
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.benchmark-table-wrapper {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.benchmark-customize-table {
+  --easy-table-border: 2px solid #f3f4f6;
+  --easy-table-row-border: 2px solid #f3f4f6;
+
+  --easy-table-header-font-size: 14px;
+  --easy-table-header-height: 50px;
+  --easy-table-header-font-color: #434d56;
+  --easy-table-header-background-color: #e4e4e4;
+
+  --easy-table-header-item-padding: 20px 15px;
+  --easy-table-body-item-padding: 20px 15px;
 }
 </style>
