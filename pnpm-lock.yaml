@@ -35,6 +35,9 @@ dependencies:
   vue3-carousel:
     specifier: ^0.3.1
     version: 0.3.1(vue@3.3.4)
+  vue3-easy-data-table:
+    specifier: ^1.5.47
+    version: 1.5.47
   vueperslides:
     specifier: ^3.5.1
     version: 3.5.1(vue@3.3.4)
@@ -4479,6 +4482,12 @@ packages:
     resolution: {integrity: sha512-86vUkNPBzL2PVuR9w6hUsI90ccFjLp+K8cSFpRTISf+SjUQY3fMHc5CFF5MUL62v1xYYm27zEBmQupO9VQx9Kw==}
     peerDependencies:
       vue: ^3.2.0
+    dependencies:
+      vue: 3.3.4
+    dev: false
+
+  /vue3-easy-data-table@1.5.47:
+    resolution: {integrity: sha512-q0bZBlWIwQ3FIhB+F98ylFPfBJWiS3Xv7QqBe3xS5MbRNZP96RFjaQn7C0Pi0J/aaucNW8gFWxPyh9NESS1ehw==}
     dependencies:
       vue: 3.3.4
     dev: false
