@@ -42,4 +42,4 @@ export default defineComponent({
   box-sizing: border-box;
 }
 </style>
-./components/CategoryOfReports.vue
+<!-- ./components/CategoryOfReports.vue -->
