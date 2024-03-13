@@ -6,6 +6,9 @@
                     <h3 class="benchmark-modal-top_text">
                         Notification settings
                     </h3>
+                    <button class="benchmark-close-wrapper">
+                        <img class="benchmark-close-button" src="/src/assets/close.png" alt="">
+                    </button>
                 </div>
 
             </div>
@@ -187,8 +190,9 @@ p {
 
         .benchmark-modal-top {
             display: flex;
-            flex-direction: column;
-            width: fit-content;
+            /* flex-direction: column; */
+            justify-content: space-between;
+            /* width: fit-content; */
             height: fit-content;
             gap: 16px;
 
@@ -436,5 +440,16 @@ p {
     border: none;
     cursor: pointer;
     background-color: transparent;
+}
+
+.benchmark-close-button{
+width: 25px;
+height: 25px;
+cursor: pointer;
+}
+
+.benchmark-close-wrapper{
+    background-color: transparent;
+    border: none;
 }
 </style>
