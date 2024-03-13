@@ -29,10 +29,7 @@
       <div class="benchmark-banner-content">
         <p class="benchmark-banner-content-header">Unlock revenue growth</p>
         <p class="benchmark-banner-content-text">
-          Congratulations, setup's complete! While your dashboard data is being
-          prepared, take time to explore industry insights and performance
-          details. We'll let you know as soon as the initial insights are
-          available
+          Congratulations, setup's complete! While your dashboard data is being prepared, take time to explore industry insights and performance details. We'll let you know as soon as the initial insights are available
         </p>
       </div>
     </div>
@@ -77,9 +74,7 @@ export default defineComponent({
 </script>
 
 <style>
-*{
-  font-family: Montserrat;
-}
+
 .benchmark-banner {
   display: flex;
   justify-content: space-between;

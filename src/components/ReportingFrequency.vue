@@ -116,9 +116,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-* {
-  font-family: Montserrat !important;
-}
 
 .benchmark-modal {
   width: 100%;
