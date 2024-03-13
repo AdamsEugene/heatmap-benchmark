@@ -1,9 +1,21 @@
 <template>
   <div class="main">
+    <div v-if="showEditModal">
+      <notification-settings :updateEditModal="updateEditModal" />
+    </div>
+    <div v-if="sheConfirmModal">
+      <confirmation-modal
+        :text="confirmationText[confirmStatus as 'paused' | 'enabled']"
+        :updateConfirmModal="updateConfirmModal"
+      />
+    </div>
     <benchmark-banner />
     <h1>Industry Benchmarks</h1>
-    <div>
-      <change-settings />
+    <div v-if="showSettings">
+      <change-settings
+        :updateEditModal="updateEditModal"
+        :updateConfirmModal="updateConfirmModal"
+      />
     </div>
     <div class="benchmark-timeline">
       <div class="benchmark-timeline-left">
@@ -30,7 +42,12 @@
         </div>
       </div>
       <div class="benchmark-timeline-right">
-        <p class="benchmark-timeline-right-text">Change Settings</p>
+        <p
+          class="benchmark-timeline-right-text"
+          @click="showSettings = !showSettings"
+        >
+          {{ showSettings ? "Cancel" : "Change Settings" }}
+        </p>
       </div>
     </div>
     <div class="benchmark-grid-container">
@@ -55,6 +72,8 @@ import BenchmarkBanner from "./BenchmarkBanner.vue";
 import BenchmarkMetrics from "./BenchmarkMetrics.vue";
 import BenchmarkAOV from "./BenchmarkAOV.vue";
 import ChangeSettings from "@/components/ChangeSettings.vue";
+import NotificationSettings from "./NotificationSettings.vue";
+import ConfirmationModal from "./ConfirmationModal.vue";
 
 export default defineComponent({
   components: {
@@ -62,9 +81,15 @@ export default defineComponent({
     BenchmarkMetrics,
     BenchmarkAOV,
     ChangeSettings,
+    NotificationSettings,
+    ConfirmationModal,
   },
   data() {
     return {
+      showSettings: false,
+      showEditModal: false,
+      sheConfirmModal: false,
+      confirmStatus: "",
       metrics: [
         {
           title: "AOV",
@@ -113,7 +138,23 @@ export default defineComponent({
           data: [500, 800, 400, 900, 700, 1000, 300],
         },
       ],
+      confirmationText: {
+        paused: `Mobile updates have been <strong>paused</strong>. You won't receive
+            any further updates on your mobile device until you enable
+            notifications for this activity.`,
+        enabled: `Mobile updates are now <strong>enabled</strong>. You will start receiving timely notifications on your mobile device for this activity.
+Stay in the loop and get the latest updates delivered straight to your phone`,
+      },
     };
+  },
+  methods: {
+    updateEditModal(state: boolean) {
+      this.showEditModal = state;
+    },
+    updateConfirmModal(state: boolean, status: string) {
+      this.confirmStatus = status;
+      this.sheConfirmModal = state;
+    },
   },
 });
 </script>
