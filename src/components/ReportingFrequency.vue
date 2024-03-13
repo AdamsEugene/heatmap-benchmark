@@ -177,7 +177,7 @@ p {
       line-height: 21px;
       letter-spacing: -0.4px;
       text-align: left;
-      /* max-width: 653px; */
+      max-width: 653px;
       color: #01101e;
     }
   }
