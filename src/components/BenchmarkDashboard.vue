@@ -49,11 +49,10 @@
   </div>
 
   <div class="benchmark-table-wrapper">
-
     <EasyDataTable
       :headers="headers"
       :items="items"
-    table-class-name="customize-table"
+    table-class-name="benchmark-customize-table"
     header-text-direction="center"
     body-text-direction="center"
     />
@@ -129,25 +128,26 @@ export default defineComponent({
         },
       ],
       headers: [
-  { text: "Metric", value: "player", width: 200 },
-  { text: "Previous week JB", value: "player" },
-  { text: "Current week JB", value: "player" },
-  { text: "Previous week JB", value: "team"},
-  { text: "Current week JB", value: "number"},
-  { text: "% Change JB", value: "position"},
-  { text: "% Change Industry", value: "indicator.height"},
-  { text: "Relative Performance", value: "indicator.weight", sortable: true},
-  { text: "Weighted Score", value: "lastAttended", width: 200},
-  { text: "Final Score", value: "country"},
+  // { text: "Metric", value: "Metric", width: 200 },
+  { text: "Metric", value: "Metric"},
+  { text: "Previous week JB", value: "PreviousweekJB" },
+  { text: "Current week JB", value: "CurrentweekJB" },
+  { text: "Previous week Industry", value: "PreviousweekIndustry"},
+  { text: "Current week Industry", value: "CurrentweekIndustry"},
+  { text: "% Change JB", value: "ChangeJB"},
+  { text: "% Change Industry", value: "ChangeIndustry"},
+  { text: "Relative Performance", value: "RelativePerformance", sortable: true},
+  { text: "Weighted Score", value: "WeightedScore"},
+  { text: "Final Score", value: "FinalScore"},
 ],
 
 items: [
-  { player: "Stephen Curry", team: "GSW", number: 30, position: 'G', indicator: {"height": '6-2', "weight": 185}, lastAttended: "Davidson", country: "USA"},
-  { player: "Lebron James", team: "LAL", number: 6, position: 'F', indicator: {"height": '6-9', "weight": 250}, lastAttended: "St. Vincent-St. Mary HS (OH)", country: "USA"},
-  { player: "Kevin Durant", team: "BKN", number: 7, position: 'F', indicator: {"height": '6-10', "weight": 240}, lastAttended: "Texas-Austin", country: "USA"},
-  { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
-  { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
-  { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
+  { Metric: "AOV", PreviousweekJB: "$139.67", CurrentweekJB: "$147.39", PreviousweekIndustry: '$86.13', CurrentweekIndustry: "$94.50", ChangeJB: "5.53%", ChangeIndustry: "9.72%", RelativePerformance : "-4.19%", WeightedScore: "15", FinalScore: "-0.6292"},
+  { Metric: "Revenue per session", PreviousweekJB: "$2.46", CurrentweekJB: "$2.59", PreviousweekIndustry: '$2.18', CurrentweekIndustry: "$2.50", ChangeJB: "5.28%", ChangeIndustry: "14.68%", RelativePerformance : "-9.39%", WeightedScore: "25", FinalScore: "-2.3486"},
+  { Metric: "Conversion Rate", PreviousweekJB: "1.12", CurrentweekJB: "1.20", PreviousweekIndustry: '0.88', CurrentweekIndustry: "0.90", ChangeJB: "-1.05%", ChangeIndustry: "2.28%", RelativePerformance : "-3.33%", WeightedScore: "20", FinalScore: "-0.6652"},
+  { Metric: "Total revenue", PreviousweekJB: "$10,095.36", CurrentweekJB: "$11 274.49", PreviousweekIndustry: '$7,558.94', CurrentweekIndustry: "$9,456.66", ChangeJB: "11.68%", ChangeIndustry: "25.11%", RelativePerformance : "-13.43%", WeightedScore: "20", FinalScore: "-2.6852"},
+  { Metric: "Total traffic", PreviousweekJB: "5212.03", CurrentweekJB: "5671.48", PreviousweekIndustry: '3183.86', CurrentweekIndustry: "3560.27", ChangeJB: "8.82%", ChangeIndustry: "11.82%", RelativePerformance : "-3.01%", WeightedScore: "15", FinalScore: "-0.4511"},
+  { Metric: "Time on site ", PreviousweekJB: "5.58", CurrentweekJB: "6.17", PreviousweekIndustry: '3.15', CurrentweekIndustry: "3.34", ChangeJB: "10.40%", ChangeIndustry: "6.05%", RelativePerformance : "4.35%", WeightedScore: "5", FinalScore: "0.2176"},
 ]
     };
   },
@@ -235,7 +235,7 @@ items: [
   padding-right: 12px;
 }
 
-.customize-table {
+.benchmark-customize-table {
   --easy-table-border: 2px solid #F3F4F6;
   --easy-table-row-border: 2px solid #F3F4F6;
 
@@ -247,4 +247,5 @@ items: [
   --easy-table-header-item-padding: 20px 15px;
   --easy-table-body-item-padding: 20px 15px;
 }
+
 </style>
