@@ -8,7 +8,9 @@
           </h3>
         </div>
         <p class="benchmark-modal-top-content">
-          Choose between daily, weekly, or monthly reports or choose custom dates <br> tailored to your preference
+          Choose between daily, weekly, or monthly reports or choose custom
+          dates <br />
+          tailored to your preference
         </p>
       </div>
       <div class="benchmark-modal-body">
@@ -39,17 +41,14 @@
           <div class="benchmark-noti">
             <div v-for="notification in notifications" :key="notification.id">
               <div
-                class="benchmark-radio-wrapper"
-                :class="{
-                  'benchmark-radio-wrapper-active': notification.checked,
-                }"
-              >
+                class="benchmark-radio-wrapper" :class="{ 'benchmark-radio-wrapper-active': selectedNotificationId === notification.id, }">
                 <input
                   class="benchmark-radio"
                   type="radio"
                   :name="notification.name"
                   :id="notification.id"
-                  v-model="notification.checked"
+                  v-model="selectedNotificationId"
+                  :value="notification.id"
                 />
                 <label class="benchmark-radio-label" :for="notification.id">{{
                   notification.label
@@ -105,26 +104,21 @@ export default defineComponent({
   data() {
     return {
       notifications: [
-        { id: "daily", name: "daily", label: "Daily", checked: false },
-        { id: "weekly", name: "weekly", label: "Weekly", checked: false },
-        { id: "monthly", name: "monthly", label: "Monthly", checked: false },
-        {
-          id: "customDates",
-          name: "customDates",
-          label: "Custom Dates",
-          checked: false,
-        },
+        { id: "daily", name: "frequency", label: "Daily", checked: false },
+        { id: "weekly", name: "frequency", label: "Weekly", checked: false },
+        { id: "monthly", name: "frequency", label: "Monthly", checked: false },
+        { id: "customDates", name: "frequency", label: "Custom Dates", checked: false,},
       ],
+      selectedNotificationId: null,
     };
   },
 });
 </script>
 
 <style scoped>
-*{
+* {
   font-family: Montserrat !important;
 }
-
 
 .benchmark-modal {
   width: 100%;
@@ -148,8 +142,7 @@ p {
   min-height: 609px;
   border-radius: 10px;
   background: #fff;
-  box-shadow:
-    0px 32px 41px -23px rgba(24, 24, 28, 0.07),
+  box-shadow: 0px 32px 41px -23px rgba(24, 24, 28, 0.07),
     0px 2px 6px 0px rgba(24, 24, 28, 0.06);
 
   .benchmark-modal-content-header {
@@ -312,5 +305,12 @@ p {
       }
     }
   }
+
+  /* Add styles for the selected radio button */
+  .benchmark-radio-wrapper-active {
+    background-color: #EFEFEF !important; /* Set your desired background color (gray in this case) */
+    border-radius: 5px; /* Optional: Add rounded corners for a nicer look */
+  }
+
 }
 </style>
