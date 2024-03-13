@@ -157,13 +157,20 @@ export default defineComponent({
     display: flex;
     min-width: 173px;
     width: 100%;
-    padding: 16px 10px 10px 10px;
+    /* padding: 10px; */
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
     border-radius: 8px;
-    background: #fff;
-    box-shadow: 1px 0px 6px 0px rgba(28, 39, 49, 0.08);
+
+    .benchmark-metrics-bottom-text {
+      color: #4e4e4e;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 15.5px; /* 155% */
+      letter-spacing: -0.2px;
+    }
 
     .benchmark-metrics-bottom-value-wrapper {
       display: flex;
