@@ -13,10 +13,21 @@
         <div class="benchmark-selection-button benchmark-active"> 1. E-mail Setings </div>
           <div class="benchmark-selection-button">2. Phone Settings</div>
     </div>
+
+    <div class="benchmark-input-wrapper">
+        <div class="input-with-button">
+            <p class="benchmark-title email">E-mail</p>
+        <div class="input-container">
+        <input type="text" class="input-field" placeholder="Type here" />
+        <button class="send-button">change</button>
+        </div>
+    </div>
+    </div>
+
         <div class="benchmark-modal-body">
           <div class="benchmark-modal-body-content">
             <div>
-                <p class="benchmark-title">Select as many options as you'd like.</p>
+                <p class="benchmark-title">Select your reporting frequency</p>
 
                 <div class="benchmark-noti">
                   <div v-for="notification in notifications" :key="notification.id">
@@ -39,29 +50,32 @@
             </div>
 
              <div>
-                <p class="benchmark-title">Select as many options as you'd like.</p>
+                <p class="benchmark-title">Select the category of reports</p>
 
-            <div class="benchmark-noti">
-                <div v-for="report in reports" :key="report.id">
-                <div
-                    class="benchmark-checkbox-wrapper"
-                    :class="{
-                    'benchmark-checkbox-wrapper-active': report.checked,
-                    }"
-                >
-                    <input
-                    class="benchmark-checkbox"
-                    type="checkbox"
-                    :name="report.name"
-                    :id="report.id"
-                    v-model="report.checked"
-                    />
-                    <label
-                    class="benchmark-checkbox-label"
-                    :for="report.id"
-                    >{{ report.label }}</label
+            <div class="benchmark-noti grid">
+                <div class="benchmark-grid">
+
+                    <div v-for="report in reports" :key="report.id">
+                    <div
+                        class="benchmark-checkbox-wrapper"
+                        :class="{
+                        'benchmark-checkbox-wrapper-active': report.checked,
+                        }"
                     >
-                </div>
+                        <input
+                        class="benchmark-checkbox"
+                        type="checkbox"
+                        :name="report.name"
+                        :id="report.id"
+                        v-model="report.checked"
+                        />
+                        <label
+                        class="benchmark-checkbox-label"
+                        :for="report.id"
+                        >{{ report.label }}</label
+                        >
+                    </div>
+                    </div>
                 </div>
           </div>
             </div>
@@ -69,13 +83,13 @@
         </div>
         <div class="benchmark-modal-footer">
           <div class="benchmark-modal-footer-content">
-            <div class="benchmark-buttons">
+            <!-- <div class="benchmark-buttons">
               <div class="benchmark-button benchmark-active"> 1. Set up contact </div>
               <div class="benchmark-button">2. Report frequency</div>
               <div class="benchmark-button">3. Select metrics</div>
-            </div>
+            </div> -->
             <button class="benchmark-modal-button">
-              <span class="benchmark-modal-button-text">Next</span>
+              <span class="benchmark-modal-button-text">Save changes</span>
               <svg
                 width="14"
                 height="14"
@@ -176,7 +190,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 750px;
-    min-height: 609px;
+    /* min-height: 447px; */
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 32px 41px -23px rgba(24, 24, 28, 0.07),
@@ -225,11 +239,26 @@
         margin-top: 12px;
         padding: 6px 16px;
       }
-  
+
+      .benchmark-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .benchmark-checkbox {
+            margin-right: 0.5rem;
+        }
+
+        .benchmark-checkbox-label{
+            font-size: 14px;
+            font-weight: 400;
+        }
+
     .benchmark-modal-body {
       display: flex;
       padding: 32px 16px;
-      min-height: 419px;
+      /* min-height: 419px; */
   
       .benchmark-modal-body-content {
         display: flex;
@@ -303,7 +332,7 @@
   
       .benchmark-modal-footer-content {
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         align-items: center;
         width: 100%;
         padding: 0 16px;
@@ -335,8 +364,8 @@
           align-items: center;
           width: fit-content;
           height: fit-content;
-          top: 365px;
-          left: 254px;
+          /* top: 365px; */
+          /* left: 254px; */
           padding: 10px 20px;
           border-radius: 8px;
           gap: 10px;
@@ -377,5 +406,51 @@
             }
         }
   
+  }
+
+  .benchmark-input-wrapper{
+padding: 0px 16px;
+margin-top: 20px;
+  }
+
+ /* Container styles */
+ .input-with-button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+
+  /* Input container styles */
+  .input-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .email{
+    margin-bottom: 6px;
+  }
+
+  .input-field {
+    padding: 8px;
+    width: 100%;
+    border:1px solid #E6E7E8;
+    padding: 16px 10px;
+    border-radius: 10px;
+  }
+
+  /* change button styles */
+  .send-button {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 16px;
+    color: #07CC4A;
+    font-weight:600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
   }
   </style>
