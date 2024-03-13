@@ -1,11 +1,11 @@
 <template>
   <div class="benchmark-metrics-wrapper">
     <div class="benchmark-metrics-top">
-      <p class="benchmark-metrics-top-title">AOV</p>
+      <p class="benchmark-metrics-top-title">{{ title }}</p>
       <div class="benchmark-metrics-top-metrics">
         <div class="benchmark-metrics-top-metrics-item">
           <div class="benchmark-metrics-top-metrics-item-top">
-            <p class="benchmark-metrics-top-p">JB</p>
+            <p class="benchmark-metrics-top-p">{{ site.siteInit }}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="10"
@@ -16,16 +16,26 @@
               <path
                 d="M5.19526 7.5C5.00281 7.83333 4.52169 7.83333 4.32924 7.5L0.432124 0.75C0.239674 0.416666 0.480236 -1.62922e-07 0.865136 -1.96571e-07L8.65936 -8.77964e-07C9.04426 -9.11613e-07 9.28483 0.416666 9.09238 0.749999L5.19526 7.5Z"
                 fill="#C4C4C4"
+                :style="{
+                  fill:
+                    site.status.toLowerCase() === 'down'
+                      ? '#FF4A3D'
+                      : site.status.toLowerCase() === 'up'
+                      ? '#07CC4A'
+                      : '',
+                }"
               />
             </svg>
           </div>
           <div class="benchmark-metrics-top-metrics-item-bottom">
-            <p class="benchmark-metrics-top-metrics-item-bottom-text">-</p>
+            <p class="benchmark-metrics-top-metrics-item-bottom-text">
+              {{ site.value || "-" }}
+            </p>
           </div>
         </div>
         <div class="benchmark-metrics-top-metrics-item">
           <div class="benchmark-metrics-top-metrics-item-top">
-            <p class="benchmark-metrics-top-p">Industry</p>
+            <p class="benchmark-metrics-top-p">{{ industry.siteInit }}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="10"
@@ -36,11 +46,21 @@
               <path
                 d="M4.33013 0.750001C4.52258 0.416667 5.0037 0.416667 5.19615 0.75L9.09327 7.5C9.28572 7.83333 9.04515 8.25 8.66025 8.25L0.866025 8.25C0.481125 8.25 0.240563 7.83333 0.433013 7.5L4.33013 0.750001Z"
                 fill="#07CC4A"
+                :style="{
+                  fill:
+                    industry.status.toLowerCase() === 'down'
+                      ? '#FF4A3D'
+                      : industry.status.toLowerCase() === 'up'
+                      ? '#07CC4A'
+                      : '',
+                }"
               />
             </svg>
           </div>
           <div class="benchmark-metrics-top-metrics-item-bottom">
-            <p class="benchmark-metrics-top-metrics-item-bottom-text">9.72%</p>
+            <p class="benchmark-metrics-top-metrics-item-bottom-text">
+              {{ industry.value || "-" }}
+            </p>
           </div>
         </div>
       </div>
@@ -48,8 +68,24 @@
     <div class="horizontal-line" />
     <div class="benchmark-metrics-bottom">
       <p class="benchmark-metrics-bottom-text">Relative Performance</p>
-      <div class="benchmark-metrics-bottom-value-wrapper">
-        <p class="benchmark-metrics-bottom-value">-</p>
+      <div
+        class="benchmark-metrics-bottom-value-wrapper"
+        :class="{ isEmpty: !relPer.value }"
+        :style="{
+          background:
+            relPer.status.toLowerCase() === 'low'
+              ? '#FEB2BF'
+              : relPer.status.toLowerCase() === 'high'
+              ? '#D1FFE1'
+              : '',
+        }"
+      >
+        <p class="benchmark-metrics-bottom-value">
+          {{ relPer.value || "-" }}
+        </p>
+        <p v-if="relPer.value" class="benchmark-metrics-bottom-status">
+          {{ relPer.status }}
+        </p>
       </div>
     </div>
   </div>
@@ -60,6 +96,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {},
+  props: ["title", "site", "industry", "relPer"],
   data() {
     return {
       show: true,
@@ -174,13 +211,18 @@ export default defineComponent({
 
     .benchmark-metrics-bottom-value-wrapper {
       display: flex;
-      padding: 12px 7.5px;
-      flex-direction: column;
+      padding: 12px 24px;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
       align-self: stretch;
       border-radius: 4px;
       background: #f3f3f3;
+
+      &.isEmpty {
+        flex-direction: column;
+        justify-content: center;
+      }
 
       .benchmark-metrics-bottom-value {
         color: #1a2128;
@@ -189,6 +231,15 @@ export default defineComponent({
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+      }
+
+      .benchmark-metrics-bottom-status {
+        color: #1a2128;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
       }
     }
   }

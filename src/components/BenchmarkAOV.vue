@@ -3,17 +3,31 @@
     <div class="benchmark-aov-content">
       <div class="benchmark-aov-top-part">
         <p class="benchmark-aov-top-part-text">Weekly Report: Industry</p>
-        <div class="benchmark-aov-top-part-left">
-          <div class="benchmark-aov-top-box" />
-          <p class="benchmark-aov-top-part-left-text">Industry</p>
+        <div class="benchmark-aov-top-part-left-wrapper">
+          <div class="benchmark-aov-top-part-left">
+            <div class="benchmark-aov-top-box" />
+            <p class="benchmark-aov-top-part-left-text">Industry</p>
+          </div>
+          <div class="benchmark-aov-top-part-left">
+            <div
+              class="benchmark-aov-top-box"
+              :style="{ background: '#008160' }"
+            />
+            <p class="benchmark-aov-top-part-left-text">
+              {{ series?.[1]?.name }}
+            </p>
+          </div>
         </div>
       </div>
       <h2 class="benchmark-aov-content-title">Average order value</h2>
       <div class="benchmark-aov--chart">
-        <benchmark-chart />
+        <p class="benchmark-aov--chart-title">Sales</p>
+        <benchmark-chart :series="series" />
       </div>
       <div class="benchmark-aov-buttons">
-        <button class="benchmark-aov-button button-active">Average order value</button>
+        <button class="benchmark-aov-button button-active">
+          Average order value
+        </button>
         <button class="benchmark-aov-button">Revenue per session</button>
         <button class="benchmark-aov-button">Conversion rate</button>
         <button class="benchmark-aov-button">Total revenue</button>
@@ -26,10 +40,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import BenchmarkChart from "@/components/BenchmarkChart.vue";
+import BenchmarkChart from "./BenchmarkChart.vue";
 
 export default defineComponent({
   components: { BenchmarkChart },
+  props: ["series"],
   data() {
     return {
       show: true,
@@ -68,24 +83,29 @@ export default defineComponent({
         line-height: 20px; /* 142.857% */
       }
 
-      .benchmark-aov-top-part-left {
+      .benchmark-aov-top-part-left-wrapper {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 24px;
 
-        .benchmark-aov-top-box {
-          width: 16px;
-          height: 16px;
-          border-radius: 2px;
-          background: #ff6868;
-        }
+        .benchmark-aov-top-part-left {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          .benchmark-aov-top-box {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+            background: #ff6868;
+          }
 
-        .benchmark-aov-top-part-left-text {
-          color: #1a2835;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 300;
-          line-height: 20px; /* 142.857% */
+          .benchmark-aov-top-part-left-text {
+            color: #1a2835;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 20px; /* 142.857% */
+          }
         }
       }
     }
@@ -103,6 +123,20 @@ export default defineComponent({
     }
 
     .benchmark-aov--chart {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 2px;
+
+      .benchmark-aov--chart-title {
+        color: #434d56;
+        text-align: center;
+        transform: rotate(-90deg);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
       .apexcharts-toolbar {
         display: none !important;
       }
