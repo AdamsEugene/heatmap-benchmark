@@ -33,6 +33,9 @@
     <div class="benchmark-grid-container">
       <benchmark-metrics v-for="item in 6" :key="item" />
     </div>
+    <div>
+      <benchmark-a-o-v />
+    </div>
   </div>
 </template>
 
@@ -40,9 +43,10 @@
 import { defineComponent } from "vue";
 import BenchmarkBanner from "./BenchmarkBanner.vue";
 import BenchmarkMetrics from "./BenchmarkMetrics.vue";
+import BenchmarkAOV from "./BenchmarkAOV.vue";
 
 export default defineComponent({
-  components: { BenchmarkBanner, BenchmarkMetrics },
+  components: { BenchmarkBanner, BenchmarkMetrics, BenchmarkAOV },
   data() {
     return {
       show: true,
