@@ -2,7 +2,12 @@
   <div class="benchmark-change-settings">
     <div class="benchmark-change-settings-top">
       <p class="benchmark-change-settings-title">Notifications</p>
-      <p class="benchmark-change-settings-button">Edit</p>
+      <p
+        class="benchmark-change-settings-button"
+        @click="updateEditModal(true)"
+      >
+        Edit
+      </p>
     </div>
     <div class="benchmark-change-settings-bar" />
     <div class="benchmark-change-settings-content">
@@ -15,9 +20,11 @@
             type="checkbox"
             name="email-alert"
             id="email-alert"
+            v-model="emailAlert"
             class="toggle-checkbox"
+            @change="handleCheckboxChange('email')"
           />
-          <div class="toggle-switch"></div>
+          <label class="toggle-switch" for="email-alert"></label>
         </div>
         <p class="benchmark-change-settings-content-text">Weekly updates</p>
         <p class="benchmark-change-settings-content-text">4 metrics</p>
@@ -31,9 +38,11 @@
             type="checkbox"
             name="text-alert"
             id="text-alert"
+            v-model="textAlert"
             class="toggle-checkbox"
+            @change="handleCheckboxChange('text')"
           />
-          <div class="toggle-switch"></div>
+          <label class="toggle-switch" for="text-alert"></label>
         </div>
         <p class="benchmark-change-settings-content-text">Weekly updates</p>
         <p class="benchmark-change-settings-content-text">4 metrics</p>
@@ -47,10 +56,21 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {},
+  props: ["updateEditModal", "updateConfirmModal"],
   data() {
     return {
-      show: true,
+      emailAlert: false,
+      textAlert: false,
     };
+  },
+  methods: {
+    handleCheckboxChange(type: "email" | "text") {
+      if (type === "email") {
+        this.updateConfirmModal(true, this.emailAlert ? "enabled" : "paused");
+      } else if (type === "text") {
+        this.updateConfirmModal(true, this.textAlert ? "enabled" : "paused");
+      }
+    },
   },
 });
 </script>
@@ -136,7 +156,7 @@ export default defineComponent({
 
 .toggle-switch {
   display: inline-block;
-  background: #E6E7E8;
+  background: #e6e7e8;
   border-radius: 16px;
   width: 32px;
   height: 18px;
@@ -149,7 +169,7 @@ export default defineComponent({
   }
   &:before {
     display: block;
-    background: linear-gradient(to bottom, #fff 0%, #E6E7E8 100%);
+    background: linear-gradient(to bottom, #fff 0%, #e6e7e8 100%);
     border-radius: 50%;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
     width: 16px;
@@ -164,7 +184,7 @@ export default defineComponent({
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
   }
   .toggle-checkbox:checked + & {
-    background: #449FF4;
+    background: #449ff4;
     &:before {
       left: 16px;
     }
