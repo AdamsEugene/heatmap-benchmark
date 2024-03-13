@@ -191,6 +191,7 @@ p {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      padding: 0px 6px;
 
       .benchmark-custom-circle {
         display: flex;
@@ -207,7 +208,7 @@ p {
       .benchmark-noti {
         display: flex;
         flex-direction: column;
-        height: fit-content; /* Hug (72px) */
+        height: fit-content;
         padding: 12px 0;
         gap: 16px;
 

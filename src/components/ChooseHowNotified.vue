@@ -239,9 +239,9 @@ p {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 39px;
+            /* width: 36px;
+            height: 36px; */
+            border-radius: 8px;
             background-color: #fff;
 
             .benchmark-checkbox {
@@ -252,13 +252,14 @@ p {
               align-items: center;
               flex-shrink: 0;
               background: #ffffff;
-              border: 1px solid #e9eaf0; /* Add a border for better visibility */
-              border-radius: 4px; /* Add border-radius for a rounded appearance */
+              border: 1px solid #e9eaf0;
+              border-radius: 4px;
               cursor: pointer;
-              transition: background-color 0.3s ease; /* Add a smooth transition effect */
+              transition: background-color 0.3s ease;
+              margin-right: 6px;
 
               &&:checked {
-                background: #449ff4; /* Change the background color on checked state */
+                background: #449ff4;
               }
             }
           }
