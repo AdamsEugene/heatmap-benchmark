@@ -8,8 +8,7 @@
           </h3>
         </div>
         <p class="benchmark-modal-top-content">
-          Enter the email id and the phone number on which you want to receive
-          insightsYou can change this later in settings.
+          Enter the email id and the phone number on which you want to receive insights <br> You can change this later in settings.
         </p>
       </div>
       <div class="benchmark-modal-body">
@@ -115,6 +114,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+*{
+  font-family: Montserrat !important;
+}
+
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -145,7 +148,7 @@ p {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 24px 16px;
+    padding: 24px;
     border: 0;
     gap: 12px;
     border-bottom: 1px solid #cccfd2;
@@ -187,6 +190,7 @@ p {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      padding: 0px 6px;
 
       .benchmark-custom-circle {
         display: flex;
@@ -246,7 +250,7 @@ p {
     justify-self: end;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    min-height: 80px;
     border-top: 1px solid #cccfd2;
 
     .benchmark-modal-footer-content {
@@ -266,6 +270,8 @@ p {
           height: fit-content; /* Hug (23px) */
           padding: 4px 10px; /* 4px top/bottom, 10px left/right */
           border-radius: 28px;
+          font-size: 12px;
+          font-weight: 700;
           gap: 10px;
           background: #f6f6f6;
 
