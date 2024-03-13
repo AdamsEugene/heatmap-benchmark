@@ -5,8 +5,8 @@
     <!-- <add-email></add-email> -->
     <!-- <reporting-frequency></reporting-frequency> -->
     <!-- <category-of-reports></category-of-reports> -->
-    <!-- <benchmark-dashboard></benchmark-dashboard> -->
-    <notification-settings></notification-settings>
+    <benchmark-dashboard></benchmark-dashboard>
+    <!-- <notification-settings></notification-settings> -->
   </div>
 </template>
 

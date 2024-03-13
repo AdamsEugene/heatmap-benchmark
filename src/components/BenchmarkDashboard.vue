@@ -47,6 +47,17 @@
       <benchmark-a-o-v :series="series" />
     </div>
   </div>
+
+  <div class="benchmark-table-wrapper">
+
+    <EasyDataTable
+      :headers="headers"
+      :items="items"
+    table-class-name="customize-table"
+    header-text-direction="center"
+    body-text-direction="center"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -55,6 +66,8 @@ import BenchmarkBanner from "./BenchmarkBanner.vue";
 import BenchmarkMetrics from "./BenchmarkMetrics.vue";
 import BenchmarkAOV from "./BenchmarkAOV.vue";
 import ChangeSettings from "@/components/ChangeSettings.vue";
+import type { Header, Item } from "vue3-easy-data-table";
+import EasyDataTable from 'vue3-easy-data-table';
 
 export default defineComponent({
   components: {
@@ -62,6 +75,8 @@ export default defineComponent({
     BenchmarkMetrics,
     BenchmarkAOV,
     ChangeSettings,
+    EasyDataTable
+    
   },
   data() {
     return {
@@ -113,6 +128,27 @@ export default defineComponent({
           data: [500, 800, 400, 900, 700, 1000, 300],
         },
       ],
+      headers: [
+  { text: "Metric", value: "player", width: 200 },
+  { text: "Previous week JB", value: "player" },
+  { text: "Current week JB", value: "player" },
+  { text: "Previous week JB", value: "team"},
+  { text: "Current week JB", value: "number"},
+  { text: "% Change JB", value: "position"},
+  { text: "% Change Industry", value: "indicator.height"},
+  { text: "Relative Performance", value: "indicator.weight", sortable: true},
+  { text: "Weighted Score", value: "lastAttended", width: 200},
+  { text: "Final Score", value: "country"},
+],
+
+items: [
+  { player: "Stephen Curry", team: "GSW", number: 30, position: 'G', indicator: {"height": '6-2', "weight": 185}, lastAttended: "Davidson", country: "USA"},
+  { player: "Lebron James", team: "LAL", number: 6, position: 'F', indicator: {"height": '6-9', "weight": 250}, lastAttended: "St. Vincent-St. Mary HS (OH)", country: "USA"},
+  { player: "Kevin Durant", team: "BKN", number: 7, position: 'F', indicator: {"height": '6-10', "weight": 240}, lastAttended: "Texas-Austin", country: "USA"},
+  { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
+  { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
+  { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
+]
     };
   },
 });
@@ -190,7 +226,25 @@ export default defineComponent({
 
 .benchmark-grid-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 columns with equal width */
-  gap: 16px; /* Adjust the gap between items */
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.benchmark-table-wrapper{
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.customize-table {
+  --easy-table-border: 2px solid #F3F4F6;
+  --easy-table-row-border: 2px solid #F3F4F6;
+
+  --easy-table-header-font-size: 14px;
+  --easy-table-header-height: 50px;
+  --easy-table-header-font-color: #434D56;
+  --easy-table-header-background-color: #E4E4E4;
+
+  --easy-table-header-item-padding: 20px 15px;
+  --easy-table-body-item-padding: 20px 15px;
 }
 </style>
