@@ -77,6 +77,9 @@ export default defineComponent({
 </script>
 
 <style>
+*{
+  font-family: Montserrat;
+}
 .benchmark-banner {
   display: flex;
   justify-content: space-between;
@@ -103,7 +106,6 @@ export default defineComponent({
 
       .benchmark-banner-content-header {
         color: #0d2d75;
-        font-family: Montserrat;
         font-size: 14px;
         font-style: normal;
         font-weight: 700;
@@ -112,7 +114,6 @@ export default defineComponent({
 
       .benchmark-banner-content-text {
         color: #0d2d75;
-        font-family: Montserrat;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;

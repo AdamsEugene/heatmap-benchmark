@@ -4,8 +4,8 @@
     <!-- <choose-how-notified></choose-how-notified> -->
     <!-- <add-email></add-email> -->
     <!-- <reporting-frequency></reporting-frequency> -->
-    <category-of-reports></category-of-reports>
-    <!-- <benchmark-dashboard></benchmark-dashboard> -->
+    <!-- <category-of-reports></category-of-reports> -->
+    <benchmark-dashboard></benchmark-dashboard>
   </div>
 </template>
 
