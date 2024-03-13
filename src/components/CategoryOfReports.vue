@@ -149,6 +149,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -179,7 +180,7 @@ p {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 24px 16px;
+    padding: 24px;
     border: 0;
     gap: 12px;
     border-bottom: 1px solid #cccfd2;
@@ -212,7 +213,8 @@ p {
 
       &.green_color {
         color: #00c191;
-        margin-top: -16px;
+        margin-top: -10px;
+        font-weight: lighter;
       }
     }
   }
@@ -226,6 +228,7 @@ p {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      padding: 0px 6px;
 
       .benchmark-custom-circle {
         display: flex;
@@ -251,8 +254,7 @@ p {
       .benchmark-noti {
         display: flex;
         flex-direction: column;
-        height: fit-content; /* Hug (72px) */
-        /* padding: 12px 0; */
+        height: fit-content;
         gap: 16px;
 
         .benchmark-checkbox-wrapper {
@@ -263,7 +265,7 @@ p {
           flex-shrink: 0;
           background-color: #fff;
           border-radius: 8px;
-          padding: 6px 8px;
+          padding: 6px 0px;
           width: 188px;
 
           .benchmark-checkbox {
@@ -271,16 +273,18 @@ p {
             border-radius: 10px;
             border: 1px solid #e6e7e8;
             padding: 0 12px;
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
           }
 
           .benchmark-checkbox-label {
             color: #1a2128;
             text-align: center;
-            font-family: Montserrat;
             font-size: 14px;
             font-style: normal;
-            font-weight: 600;
-            line-height: 20px; /* 142.857% */
+            font-weight: 700;
+            line-height: 20px;
           }
         }
       }
@@ -293,7 +297,7 @@ p {
     justify-self: end;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    min-height: 80px;
     border-top: 1px solid #cccfd2;
 
     .benchmark-modal-footer-content {
@@ -313,6 +317,8 @@ p {
           height: fit-content; /* Hug (23px) */
           padding: 4px 10px; /* 4px top/bottom, 10px left/right */
           border-radius: 28px;
+          font-size: 12px;
+          font-weight: 700;
           gap: 10px;
           background: #f6f6f6;
 

@@ -29,10 +29,7 @@
       <div class="benchmark-banner-content">
         <p class="benchmark-banner-content-header">Unlock revenue growth</p>
         <p class="benchmark-banner-content-text">
-          Congratulations, setup's complete! While your dashboard data is being
-          prepared, take time to explore industry insights and performance
-          details. We'll let you know as soon as the initial insights are
-          available
+          Congratulations, setup's complete! While your dashboard data is being prepared, take time to explore industry <br> insights and performance details. We'll let you know as soon as the initial insights are available
         </p>
       </div>
     </div>
@@ -77,6 +74,7 @@ export default defineComponent({
 </script>
 
 <style>
+
 .benchmark-banner {
   display: flex;
   justify-content: space-between;
@@ -103,7 +101,6 @@ export default defineComponent({
 
       .benchmark-banner-content-header {
         color: #0d2d75;
-        font-family: Montserrat;
         font-size: 14px;
         font-style: normal;
         font-weight: 700;
@@ -112,12 +109,11 @@ export default defineComponent({
 
       .benchmark-banner-content-text {
         color: #0d2d75;
-        font-family: Montserrat;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
         line-height: 20px; 
-        max-width: 772px;;
+        /* max-width: 772px; */
       }
     }
   }

@@ -54,6 +54,10 @@ export default defineComponent({
 </script>
 
 <style>
+* {
+  font-family: Montserrat;
+}
+
 .benchmark-aov-wrapper {
   width: 100%;
   min-height: 426px;

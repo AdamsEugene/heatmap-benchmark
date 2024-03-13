@@ -9,7 +9,8 @@
         </div>
         <p class="benchmark-modal-top-content">
           Choose between daily, weekly, or monthly reports or choose custom
-          dates tailored to your preference
+          dates <br />
+          tailored to your preference
         </p>
       </div>
       <div class="benchmark-modal-body">
@@ -40,17 +41,14 @@
           <div class="benchmark-noti">
             <div v-for="notification in notifications" :key="notification.id">
               <div
-                class="benchmark-radio-wrapper"
-                :class="{
-                  'benchmark-radio-wrapper-active': notification.checked,
-                }"
-              >
+                class="benchmark-radio-wrapper" :class="{ 'benchmark-radio-wrapper-active': selectedNotificationId === notification.id, }">
                 <input
                   class="benchmark-radio"
                   type="radio"
                   :name="notification.name"
                   :id="notification.id"
-                  v-model="notification.checked"
+                  v-model="selectedNotificationId"
+                  :value="notification.id"
                 />
                 <label class="benchmark-radio-label" :for="notification.id">{{
                   notification.label
@@ -106,22 +104,19 @@ export default defineComponent({
   data() {
     return {
       notifications: [
-        { id: "daily", name: "daily", label: "Daily", checked: false },
-        { id: "weekly", name: "weekly", label: "Weekly", checked: false },
-        { id: "monthly", name: "monthly", label: "Monthly", checked: false },
-        {
-          id: "customDates",
-          name: "customDates",
-          label: "Custom Dates",
-          checked: false,
-        },
+        { id: "daily", name: "frequency", label: "Daily", checked: false },
+        { id: "weekly", name: "frequency", label: "Weekly", checked: false },
+        { id: "monthly", name: "frequency", label: "Monthly", checked: false },
+        { id: "customDates", name: "frequency", label: "Custom Dates", checked: false,},
       ],
+      selectedNotificationId: null,
     };
   },
 });
 </script>
 
 <style scoped>
+
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -144,15 +139,14 @@ p {
   min-height: 609px;
   border-radius: 10px;
   background: #fff;
-  box-shadow:
-    0px 32px 41px -23px rgba(24, 24, 28, 0.07),
+  box-shadow: 0px 32px 41px -23px rgba(24, 24, 28, 0.07),
     0px 2px 6px 0px rgba(24, 24, 28, 0.06);
 
   .benchmark-modal-content-header {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 24px 16px;
+    padding: 24px;
     border: 0;
     gap: 12px;
     border-bottom: 1px solid #cccfd2;
@@ -194,6 +188,7 @@ p {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      padding: 0px 6px;
 
       .benchmark-custom-circle {
         display: flex;
@@ -210,7 +205,7 @@ p {
       .benchmark-noti {
         display: flex;
         flex-direction: column;
-        height: fit-content; /* Hug (72px) */
+        height: fit-content;
         padding: 12px 0;
         gap: 16px;
 
@@ -251,7 +246,7 @@ p {
     justify-self: end;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    min-height: 80px;
     border-top: 1px solid #cccfd2;
 
     .benchmark-modal-footer-content {
@@ -271,6 +266,8 @@ p {
           height: fit-content; /* Hug (23px) */
           padding: 4px 10px; /* 4px top/bottom, 10px left/right */
           border-radius: 28px;
+          font-size: 12px;
+          font-weight: 700;
           gap: 10px;
           background: #f6f6f6;
 
@@ -306,5 +303,12 @@ p {
       }
     }
   }
+
+  /* Add styles for the selected radio button */
+  .benchmark-radio-wrapper-active {
+    background-color: #EFEFEF !important; /* Set your desired background color (gray in this case) */
+    border-radius: 5px; /* Optional: Add rounded corners for a nicer look */
+  }
+
 }
 </style>

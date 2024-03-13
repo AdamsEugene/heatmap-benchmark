@@ -106,6 +106,10 @@ export default defineComponent({
 </script>
 
 <style>
+* {
+  font-family: Montserrat;
+}
+
 .horizontal-line {
   width: 100%;
   height: 1px;

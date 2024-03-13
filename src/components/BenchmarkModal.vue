@@ -201,6 +201,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -232,7 +233,7 @@ p {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 24px 16px;
+    padding: 24px ;
     border: 0;
     gap: 12px;
     border-bottom: 1px solid #cccfd2;
@@ -245,18 +246,20 @@ p {
       gap: 16px;
 
       .benchmark-modal-top_badge {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 4px 8px;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* padding: 4px 8px; */
         border-radius: 28px;
         gap: 10px;
         background-color: #e2fdec;
         font-size: 12px;
-        font-weight: 700;
+        font-weight: bolder;
         line-height: 15px;
         letter-spacing: 0em;
         text-align: center;
+        width: max-content;
+        padding: 8px 14px 8px 14px;
       }
 
       .benchmark-modal-top_text {
@@ -282,15 +285,15 @@ p {
 
   .benchmark-modal-body {
     display: flex;
-    padding: 32px 16px;
+    /* padding: 32px 16px; */
 
     .benchmark-flex-item {
       display: flex;
       justify-content: center;
       flex: 1;
-      padding: 20px;
+      /* padding: 20px; */
       &:not(:last-child) {
-        border-right: 1px solid #e6e7e8;
+        border-right: 2px solid #e6e7e8;
       }
 
       .benchmark-flex {
@@ -313,13 +316,14 @@ p {
         .benchmark-flex-card-text {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          /* gap: 10px; */
+          gap: 5px;
           padding: 10px;
           min-height: 100px;
 
           .benchmark-flex-card-head {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             line-height: 20px;
             letter-spacing: 0em;
             text-align: center;
@@ -362,7 +366,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    min-height: 80px;
     border-top: 1px solid #cccfd2;
 
     .benchmark-modal-button {

@@ -5,7 +5,8 @@
     <!-- <add-email></add-email> -->
     <!-- <reporting-frequency></reporting-frequency> -->
     <!-- <category-of-reports></category-of-reports> -->
-    <benchmark-dashboard></benchmark-dashboard>
+    <!-- <benchmark-dashboard></benchmark-dashboard> -->
+    <notification-settings></notification-settings>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import AddEmail from "./components/AddEmail.vue";
 import ReportingFrequency from "./components/ReportingFrequency.vue";
 import CategoryOfReports from "./components/CategoryOfReports.vue";
 import BenchmarkDashboard from "./components/BenchmarkDashboard.vue";
+import NotificationSettings from "./components/NotificationSettings.vue";
 
 export default defineComponent({
   components: {
@@ -26,6 +28,7 @@ export default defineComponent({
     CategoryOfReports,
     ReportingFrequency,
     BenchmarkDashboard,
+    NotificationSettings
   },
   data() {
     return {
@@ -40,6 +43,8 @@ export default defineComponent({
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Montserrat !important;
 }
+
 </style>
-./components/CategoryOfReports.vue
+<!-- ./components/CategoryOfReports.vue -->

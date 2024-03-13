@@ -6,9 +6,7 @@
           <h3 class="benchmark-modal-top_text">Choose how to get notified!</h3>
         </div>
         <p class="benchmark-modal-top-content">
-          Select the devices on how you want to receive notifications. Receive
-          concise reports directly to your phone as text messages or on your
-          e-mail. Stay updated with key insights, instantly accessible
+          Select the devices on how you want to receive notifications. Receive concise reports directly to your phone as text messages or on your e-mail. Stay updated with key insights, instantly accessible 
         </p>
       </div>
       <div class="benchmark-modal-body">
@@ -77,9 +75,7 @@
       <div class="benchmark-modal-footer">
         <div class="benchmark-modal-footer-content">
           <div class="benchmark-buttons">
-            <div class="benchmark-button benchmark-active">
-              1. Set up contact
-            </div>
+            <div class="benchmark-button benchmark-active"> 1. Set up contact </div>
             <div class="benchmark-button">2. Report frequency</div>
             <div class="benchmark-button">3. Select metrics</div>
           </div>
@@ -126,6 +122,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .benchmark-modal {
   width: 100%;
   height: 100%;
@@ -156,7 +153,7 @@ p {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 24px 16px;
+    padding: 24px;
     border: 0;
     gap: 12px;
     border-bottom: 1px solid #cccfd2;
@@ -184,7 +181,7 @@ p {
       line-height: 21px;
       letter-spacing: -0.4px;
       text-align: left;
-      max-width: 653px;
+      /* max-width: 653px; */
       color: #01101e;
     }
   }
@@ -220,6 +217,10 @@ p {
         color: #01101e;
       }
 
+      label {
+            margin-left: 10px;
+        }
+
       .benchmark-noti {
         display: flex;
         flex-direction: column;
@@ -235,26 +236,27 @@ p {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 39px;
+            /* width: 36px;
+            height: 36px; */
+            border-radius: 8px;
             background-color: #fff;
 
             .benchmark-checkbox {
               display: flex;
-              width: 18px;
-              height: 18px;
+              width: 16px;
+              height: 16px;
               justify-content: center;
               align-items: center;
               flex-shrink: 0;
               background: #ffffff;
-              border: 1px solid #e9eaf0; /* Add a border for better visibility */
-              border-radius: 4px; /* Add border-radius for a rounded appearance */
+              border: 1px solid #e9eaf0;
+              border-radius: 4px;
               cursor: pointer;
-              transition: background-color 0.3s ease; /* Add a smooth transition effect */
+              transition: background-color 0.3s ease;
+              margin-right: 6px;
 
               &&:checked {
-                background: #449ff4; /* Change the background color on checked state */
+                background: #449ff4;
               }
             }
           }
@@ -293,7 +295,7 @@ p {
     justify-self: end;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    min-height: 80px;
     border-top: 1px solid #cccfd2;
 
     .benchmark-modal-footer-content {
@@ -313,6 +315,8 @@ p {
           height: fit-content; /* Hug (23px) */
           padding: 4px 10px; /* 4px top/bottom, 10px left/right */
           border-radius: 28px;
+          font-size: 12px;
+          font-weight: 700;
           gap: 10px;
           background: #f6f6f6;
 
@@ -348,5 +352,6 @@ p {
       }
     }
   }
+
 }
 </style>
