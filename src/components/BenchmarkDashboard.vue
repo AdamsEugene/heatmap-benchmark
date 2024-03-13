@@ -2,6 +2,9 @@
   <div class="main">
     <benchmark-banner />
     <h1>Industry Benchmarks</h1>
+    <div>
+      <change-settings />
+    </div>
     <div class="benchmark-timeline">
       <div class="benchmark-timeline-left">
         <p class="benchmark-timeline-main-text">Timeline</p>
@@ -31,10 +34,17 @@
       </div>
     </div>
     <div class="benchmark-grid-container">
-      <benchmark-metrics v-for="item in 6" :key="item" />
+      <benchmark-metrics
+        v-for="(metric, index) in metrics"
+        :key="index"
+        :site="metric.site"
+        :industry="metric.industry"
+        :relPer="metric.relPer"
+        :title="metric.title"
+      />
     </div>
     <div>
-      <benchmark-a-o-v />
+      <benchmark-a-o-v :series="series" />
     </div>
   </div>
 </template>
@@ -44,12 +54,65 @@ import { defineComponent } from "vue";
 import BenchmarkBanner from "./BenchmarkBanner.vue";
 import BenchmarkMetrics from "./BenchmarkMetrics.vue";
 import BenchmarkAOV from "./BenchmarkAOV.vue";
+import ChangeSettings from "@/components/ChangeSettings.vue";
 
 export default defineComponent({
-  components: { BenchmarkBanner, BenchmarkMetrics, BenchmarkAOV },
+  components: {
+    BenchmarkBanner,
+    BenchmarkMetrics,
+    BenchmarkAOV,
+    ChangeSettings,
+  },
   data() {
     return {
-      show: true,
+      metrics: [
+        {
+          title: "AOV",
+          site: { siteInit: "JB", status: "down", value: "5.53%" },
+          industry: { siteInit: "industry", status: "up", value: "9.53%" },
+          relPer: { value: "-4.91%", status: "low" },
+        },
+        {
+          title: "Revenue per session",
+          site: { siteInit: "JB", status: "down", value: "5.28%" },
+          industry: { siteInit: "industry", status: "up", value: "14.68%" },
+          relPer: { value: "-9.39%", status: "low" },
+        },
+        {
+          title: "Conversion rate",
+          site: { siteInit: "JB", status: "down", value: "-1.05%" },
+          industry: { siteInit: "industry", status: "up", value: "2.28%" },
+          relPer: { value: "-3.33%", status: "low" },
+        },
+        {
+          title: "Total revenue",
+          site: { siteInit: "JB", status: "up", value: "11.43%" },
+          industry: { siteInit: "industry", status: "up", value: "25.11%" },
+          relPer: { value: "-13.43%", status: "high" },
+        },
+        {
+          title: "Total traffic",
+          site: { siteInit: "JB", status: "down", value: "8.82%" },
+          industry: { siteInit: "industry", status: "up", value: "11.82%" },
+          relPer: { value: "-3.01%", status: "low" },
+        },
+        {
+          title: "Time on site",
+          site: { siteInit: "JB", status: "down", value: "10.40%" },
+          industry: { siteInit: "industry", status: "up", value: "6.05%" },
+          relPer: { value: "4.35%", status: "high" },
+        },
+      ],
+      series: [
+        {
+          name: "Sales",
+          data: [900, 600, 200, 1000, 600, 800, 500],
+        },
+        {
+          name: "JB",
+          data: [500, 800, 400, 900, 700, 1000, 300],
+        },
+      ],
     };
   },
 });
