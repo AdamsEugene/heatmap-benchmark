@@ -25,7 +25,6 @@
               <div class="benchmark-noti">
                 <div class="benchmark-noti-content">
                   <div class="benchmark-checkbox-wrapper">
-                    <!-- <input class="benchmark-checkbox" type="checkbox" name="email" id="email" /> -->
                     <input class="benchmark-checkbox" type="checkbox" name="email" id="email" v-model="emailSelected" @change="updateNotificationMethods" />
                   </div>
                   <label class="benchmark-checkbox-label" for="email">
@@ -37,7 +36,6 @@
                 </div>
                 <div class="benchmark-noti-content">
                   <div class="benchmark-checkbox-wrapper">
-                    <!-- <input class="benchmark-checkbox" type="checkbox" name="phone" id="phone" /> -->
                     <input class="benchmark-checkbox" type="checkbox" name="phone" id="phone" v-model="phoneSelected" @change="updateNotificationMethods" />
                   </div>
                   <label class="benchmark-checkbox-label" for="phone">
@@ -70,7 +68,6 @@
           </div>
         </div>
       </div>
-
       <!-- Step 2 content -->
       <div v-if="currentStep === 2" class="benchmark-modal-body">
         <div class="benchmark-modal-content">
@@ -124,7 +121,6 @@
           </div>
         </div>
       </div>
-
       <!-- Step 3 content -->
       <div v-if="currentStep === 3" class="benchmark-modal-body">
         <div class="benchmark-modal-content">
@@ -182,7 +178,6 @@
           </div>
         </div>
       </div>
-      
       <!-- Step 4 content -->
       <div v-if="currentStep === 4" class="benchmark-modal-body">
         <div class="benchmark-modal-content">
@@ -554,7 +549,6 @@
                 cursor: pointer;
                 transition: background-color 0.3s ease;
                 margin-right: 6px;
-                /* margin-left: 6px; */
   
                 &&:checked {
                   background: #449ff4;
@@ -655,12 +649,9 @@
   
     .green_color {
       color: #00c191;
-      /* margin-top: -10px; */
       font-weight: lighter;
     }
   
- 
-
   }
   </style>
   
