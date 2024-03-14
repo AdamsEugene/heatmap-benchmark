@@ -1,5 +1,6 @@
 <template>
     <div class="benchmark-modal">
+       <!-- Step 1 content -->
       <div v-if="currentStep === 1" class="benchmark-modal-body">
         <div class="benchmark-modal-content">
           <div class="benchmark-modal-content-header">
@@ -52,8 +53,8 @@
             <div class="benchmark-modal-footer-content">
               <div class="benchmark-buttons">
               <div :class="{ 'benchmark-button': true, 'benchmark-active': currentStep === 1 }"> 1. Set up contact </div>
-              <div :class="{ 'benchmark-button': true, 'benchmark-active': currentStep === 2 }">2. Report frequency</div>
-              <div :class="{ 'benchmark-button': true, 'benchmark-active': currentStep === 3 }">3. Select metrics</div>
+              <div class="benchmark-button">2. Report frequency</div>
+              <div class="benchmark-button">3. Select metrics</div>
             </div>
               <button class="benchmark-modal-button" @click="nextStep">
                 <span class="benchmark-modal-button-text">Next</span>
@@ -126,6 +127,7 @@
         </div>
       </div>
       <div v-if="currentStep === 3" class="benchmark-modal-body">
+         <!-- Step 3 content -->
         <div class="benchmark-modal-content">
           <div class="benchmark-modal-content-header">
             <div class="benchmark-modal-top">
@@ -182,6 +184,7 @@
         </div>
       </div>
       <div v-if="currentStep === 4" class="benchmark-modal-body">
+         <!-- Step 4 content -->
         <div class="benchmark-modal-content">
           <div class="benchmark-modal-content-header">
             <div class="benchmark-modal-top">
@@ -274,7 +277,6 @@
           </div>
         </div>
       </div>
-  
     </div>
   </template>
   
@@ -292,36 +294,11 @@
         ],
         reports: [
           { id: "AOV", name: "AOV", label: "AOV", checked: false },
-          {
-            id: "Revenue per Session",
-            name: "Revenue per Session",
-            label: "Revenue per Session",
-            checked: false,
-          },
-          {
-            id: "Conversion Rate",
-            name: "Conversion Rate",
-            label: "Conversion Rate",
-            checked: false,
-          },
-          {
-            id: "Total Revenue",
-            name: "Total Revenue",
-            label: "Total Revenue",
-            checked: false,
-          },
-          {
-            id: "Total Traffic",
-            name: "Total Traffic",
-            label: "Total Traffic",
-            checked: false,
-          },
-          {
-            id: "Time on Site",
-            name: "Time on Site",
-            label: "Time on Site",
-            checked: false,
-          },
+          { id: "Revenue per Session", name: "Revenue per Session",label: "Revenue per Session", checked: false},
+          { id: "Conversion Rate", name: "Conversion Rate", label: "Conversion Rate", checked: false},
+          { id: "Total Revenue", name: "Total Revenue", label: "Total Revenue", checked: false},
+          { id: "Total Traffic", name: "Total Traffic", label: "Total Traffic", checked: false},
+          { id: "Time on Site", name: "Time on Site", label: "Time on Site", checked: false},
         ],
         selectedNotificationId: null,
         show: true,
