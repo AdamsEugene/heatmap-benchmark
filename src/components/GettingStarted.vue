@@ -393,7 +393,7 @@
   
     .benchmark-modal-body {
       display: flex;
-      padding: 32px 16px;
+      padding: 32px 20px;
       min-height: 419px;
   
       .benchmark-modal-body-content {
@@ -516,6 +516,7 @@
                 cursor: pointer;
                 transition: background-color 0.3s ease;
                 margin-right: 6px;
+                /* margin-left: 6px; */
   
                 &&:checked {
                   background: #449ff4;
@@ -557,15 +558,16 @@
       justify-self: end;
       justify-content: center;
       align-items: center;
-      min-height: 80px;
+      min-height: 0px;
       border-top: 1px solid #cccfd2;
+      /* padding: 26px; */
   
       .benchmark-modal-footer-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 0 16px;
+        /* padding: 0 16px; */
   
         .benchmark-buttons {
           display: flex;
@@ -621,13 +623,7 @@
       font-weight: lighter;
     }
   
-    .benchmark-modal-footer-content .benchmark-buttons .benchmark-button {
-    background-color: #f6f6f6;
-  }
-  
-  .benchmark-modal-footer-content .benchmark-buttons .benchmark-button.benchmark-active {
-    background-color: green;
-  }
+ 
 
   }
   </style>
