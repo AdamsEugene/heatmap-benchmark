@@ -25,7 +25,8 @@
               <div class="benchmark-noti">
                 <div class="benchmark-noti-content">
                   <div class="benchmark-checkbox-wrapper">
-                    <input class="benchmark-checkbox" type="checkbox" name="email" id="email" />
+                    <!-- <input class="benchmark-checkbox" type="checkbox" name="email" id="email" /> -->
+                    <input class="benchmark-checkbox" type="checkbox" name="email" id="email" v-model="emailSelected" @change="updateNotificationMethods" />
                   </div>
                   <label class="benchmark-checkbox-label" for="email">
                     <p class="benchmark-checkbox-head">E-mail</p>
@@ -36,7 +37,8 @@
                 </div>
                 <div class="benchmark-noti-content">
                   <div class="benchmark-checkbox-wrapper">
-                    <input class="benchmark-checkbox" type="checkbox" name="phone" id="phone" />
+                    <!-- <input class="benchmark-checkbox" type="checkbox" name="phone" id="phone" /> -->
+                    <input class="benchmark-checkbox" type="checkbox" name="phone" id="phone" v-model="phoneSelected" @change="updateNotificationMethods" />
                   </div>
                   <label class="benchmark-checkbox-label" for="phone">
                     <p class="benchmark-checkbox-head">Phone</p>
@@ -92,24 +94,20 @@
                 </svg>
               </div>
               <div class="benchmark-noti">
-                <div class="benchmark-input-wrapper">
-                  <label class="benchmark-input-label" for="email"> E-mail </label>
-                  <input class="benchmark-input" type="email" name="email" id="email"
-                    placeholder="xya@examplewebsite.com " />
-                </div>
-                <div class="benchmark-input-wrapper">
-                  <label class="benchmark-input-label" for="phone">
-                    Phone number
-                  </label>
-                  <input class="benchmark-input" type="phone" name="phone" id="phone" placeholder="8807874507" />
-                </div>
+                <div v-if="selectedNotificationMethods.includes('email')" class="benchmark-input-wrapper">
+                <label class="benchmark-input-label" for="email">E-mail</label>
+                <input class="benchmark-input" type="email" name="email" id="email" placeholder="xya@examplewebsite.com" />
+              </div>
+              <div v-if="selectedNotificationMethods.includes('phone')" class="benchmark-input-wrapper">
+                <label class="benchmark-input-label" for="phone">Phone number</label>
+                <input class="benchmark-input" type="phone" name="phone" id="phone" placeholder="8807874507" />
+              </div>
               </div>
             </div>
           </div>
           <div class="benchmark-modal-footer">
             <div class="benchmark-modal-footer-content">
               <div class="benchmark-buttons">
-                <!-- <div class="benchmark-button"> 1. Set up contact </div> -->
                 <div :class="{ 'benchmark-button': true, 'benchmark-active': currentStep === 2 }"> 1. Set up contact </div>
                 <div class="benchmark-button">2. Report frequency</div>
                 <div class="benchmark-button">3. Select metrics</div>
@@ -304,12 +302,21 @@
         show: true,
         currentStep: 1,
         activeStep: 1,
-        steps: ['Set up contact', 'Add email and phone', 'Report frequency', 'Select metrics']
+        steps: ['Set up contact', 'Add email and phone', 'Report frequency', 'Select metrics'],
+        emailSelected: false,
+        phoneSelected: false,
+        selectedNotificationMethods: [] as string[],
       };
     },
     methods: {
+      // nextStep() {
+      //   if (this.currentStep < this.steps.length) {
+      //     this.currentStep++;
+      //     this.activeStep = this.currentStep;
+      //   }
+      // },
       nextStep() {
-        if (this.currentStep < this.steps.length) {
+        if (this.currentStep < this.steps.length && this.selectedNotificationMethods.length > 0) {
           this.currentStep++;
           this.activeStep = this.currentStep;
         }
@@ -322,7 +329,16 @@
       setCurrentStep(stepNumber: any) {
         this.currentStep = stepNumber;
         this.activeStep = this.currentStep; 
-      }
+      },
+      updateNotificationMethods() {
+    this.selectedNotificationMethods = [];
+    if (this.emailSelected) {
+      this.selectedNotificationMethods.push('email');
+    }
+    if (this.phoneSelected) {
+      this.selectedNotificationMethods.push('phone');
+    }
+  }
     }
   });
   </script>
