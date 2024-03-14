@@ -70,13 +70,13 @@
           </div>
         </div>
       </div>
+
+      <!-- Step 2 content -->
       <div v-if="currentStep === 2" class="benchmark-modal-body">
-        <!-- Step 2 content -->
         <div class="benchmark-modal-content">
           <div class="benchmark-modal-content-header">
             <div class="benchmark-modal-top">
               <h3 class="benchmark-modal-top_text">
-                <!-- Add Email & Phone to receive insights -->
                 {{ getHeaderText }}
               </h3>
             </div>
@@ -124,8 +124,9 @@
           </div>
         </div>
       </div>
+
+      <!-- Step 3 content -->
       <div v-if="currentStep === 3" class="benchmark-modal-body">
-         <!-- Step 3 content -->
         <div class="benchmark-modal-content">
           <div class="benchmark-modal-content-header">
             <div class="benchmark-modal-top">
@@ -181,8 +182,9 @@
           </div>
         </div>
       </div>
+      
+      <!-- Step 4 content -->
       <div v-if="currentStep === 4" class="benchmark-modal-body">
-         <!-- Step 4 content -->
         <div class="benchmark-modal-content">
           <div class="benchmark-modal-content-header">
             <div class="benchmark-modal-top">
@@ -510,6 +512,7 @@
               flex-shrink: 0;
               border: 1px solid #e6e7e8;
               padding: 8px;
+              cursor: pointer;
             }
   
             .benchmark-radio-label {
@@ -518,6 +521,7 @@
               font-size: 14px;
               font-style: normal;
               font-weight: 400;
+              cursor: pointer;
             }
           }
   
