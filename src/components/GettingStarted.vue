@@ -76,12 +76,12 @@
           <div class="benchmark-modal-content-header">
             <div class="benchmark-modal-top">
               <h3 class="benchmark-modal-top_text">
-                Add Email & Phone to receive insights
+                <!-- Add Email & Phone to receive insights -->
+                {{ getHeaderText }}
               </h3>
             </div>
             <p class="benchmark-modal-top-content">
-              Enter the email id and the phone number on which you want to receive insights <br> You can change this later
-              in settings.
+              Enter the {{ getInputLabelText }} on which you want to receive insights. <br> You can change this later in settings.
             </p>
           </div>
           <div class="benchmark-modal-body">
@@ -309,12 +309,6 @@
       };
     },
     methods: {
-      // nextStep() {
-      //   if (this.currentStep < this.steps.length) {
-      //     this.currentStep++;
-      //     this.activeStep = this.currentStep;
-      //   }
-      // },
       nextStep() {
         if (this.currentStep < this.steps.length && this.selectedNotificationMethods.length > 0) {
           this.currentStep++;
@@ -339,7 +333,31 @@
       this.selectedNotificationMethods.push('phone');
     }
   }
+    },
+    computed: {
+    getHeaderText() {
+      if (this.emailSelected && this.phoneSelected) {
+        return "Add Email & Phone to receive insights";
+      } else if (this.emailSelected) {
+        return "Add e-mail address to receive insights";
+      } else if (this.phoneSelected) {
+        return "Add Phone number to receive insights";
+      } else {
+        return "Choose how to get notified!";
+      }
+    },
+    getInputLabelText() {
+      if (this.emailSelected && this.phoneSelected) {
+        return "email and phone";
+      } else if (this.emailSelected) {
+        return "email";
+      } else if (this.phoneSelected) {
+        return "phone";
+      } else {
+        return "email or phone";
+      }
     }
+  },
   });
   </script>
   
