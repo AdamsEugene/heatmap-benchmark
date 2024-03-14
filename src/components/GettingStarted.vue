@@ -560,14 +560,12 @@
       align-items: center;
       min-height: 0px;
       border-top: 1px solid #cccfd2;
-      /* padding: 26px; */
   
       .benchmark-modal-footer-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        /* padding: 0 16px; */
   
         .benchmark-buttons {
           display: flex;
