@@ -89,14 +89,13 @@
             </div>
             <div class="benchmark-noti">
               <div v-if="selectedNotificationMethods.includes('email')" class="benchmark-input-wrapper">
-                <label class="benchmark-input-label" for="email">E-mail</label>
-                <input class="benchmark-input" type="email" name="email" id="email"
-                  placeholder="xya@examplewebsite.com" />
-              </div>
-              <div v-if="selectedNotificationMethods.includes('phone')" class="benchmark-input-wrapper">
-                <label class="benchmark-input-label" for="phone">Phone number</label>
-                <input class="benchmark-input" type="phone" name="phone" id="phone" placeholder="8807874507" />
-              </div>
+            <label class="benchmark-input-label" for="email">E-mail</label>
+            <input class="benchmark-input" type="email" name="email" id="email" placeholder="xya@examplewebsite.com" v-model="emailInput" />
+          </div>
+          <div v-if="selectedNotificationMethods.includes('phone')" class="benchmark-input-wrapper">
+            <label class="benchmark-input-label" for="phone">Phone number</label>
+            <input class="benchmark-input" type="phone" name="phone" id="phone" placeholder="8807874507" v-model="phoneInput" />
+          </div>
             </div>
           </div>
         </div>
@@ -332,19 +331,6 @@ export default defineComponent({
     }
   },
   computed: {
-    // isNextButtonDisabled() {
-    //   if (this.currentStep === 1) {
-    //     return !this.emailSelected && !this.phoneSelected;
-    //   } else if (this.currentStep === 2) {
-    //     return !(this.selectedNotificationMethods.includes('email') || this.selectedNotificationMethods.includes('phone'));
-    //   } else if (this.currentStep === 3) {
-    //     return this.selectedNotificationId === null;
-    //   } else if (this.currentStep === 4) {
-    //     return this.reports.every(report => !report.checked);
-    //   } else {
-    //     return true;
-    //   }
-    // },
     isNextButtonDisabled() {
   if (this.currentStep === 1) {
     return !this.emailSelected && !this.phoneSelected;
