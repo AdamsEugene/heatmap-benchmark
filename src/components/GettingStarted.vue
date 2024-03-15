@@ -14,13 +14,6 @@
         </div>
         <div class="benchmark-modal-body">
           <div class="benchmark-modal-body-content">
-            <div class="benchmark-custom-circle">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L1 7" stroke="#01101E" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M7 1L1 7L7 13" stroke="#01101E" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </div>
             <p class="benchmark-title">Select as many options as you'd like.</p>
             <div class="benchmark-noti">
               <div class="benchmark-noti-content">
@@ -59,7 +52,7 @@
               <div class="benchmark-button">2. Report frequency</div>
               <div class="benchmark-button">3. Select metrics</div>
             </div>
-            <button class="benchmark-modal-button" @click="nextStep">
+            <button class="benchmark-modal-button" @click="nextStep" :class="{ 'disabled': isNextButtonDisabled }" :disabled="isNextButtonDisabled">
               <span class="benchmark-modal-button-text">Next</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 7L13 7" stroke="white" stroke-width="1.5" stroke-linecap="round" />
@@ -115,7 +108,7 @@
               <div class="benchmark-button">2. Report frequency</div>
               <div class="benchmark-button">3. Select metrics</div>
             </div>
-            <button class="benchmark-modal-button" @click="nextStep">
+            <button class="benchmark-modal-button" @click="nextStep" :class="{ 'disabled': isNextButtonDisabled }" :disabled="isNextButtonDisabled">
               <span class="benchmark-modal-button-text">Next</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 7L13 7" stroke="white" stroke-width="1.5" stroke-linecap="round" />
@@ -173,7 +166,7 @@
               </div>
               <div class="benchmark-button">3. Select metrics</div>
             </div>
-            <button class="benchmark-modal-button" @click="nextStep">
+            <button class="benchmark-modal-button" @click="nextStep" :class="{ 'disabled': isNextButtonDisabled }" :disabled="isNextButtonDisabled">
               <span class="benchmark-modal-button-text">Next</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 7L13 7" stroke="white" stroke-width="1.5" stroke-linecap="round" />
@@ -210,7 +203,7 @@
             <div class="benchmark-noti">
               <div class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="AOV" id="AOV" />
+                  <input class="benchmark-checkbox" type="checkbox" name="AOV" id="AOV" v-model="reports[0].checked" />
                 </div>
                 <label class="benchmark-checkbox-label" for="AOV">
                   <p class="benchmark-checkbox-head">AOV</p>
@@ -218,8 +211,8 @@
               </div>
               <div class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Revenue_per_Session"
-                    id="Revenue_per_Session" />
+                  <input class="benchmark-checkbox" type="checkbox" name="Revenue_per_Session" id="Revenue_per_Session" v-model="reports[1].checked"/>
+                    
                 </div>
                 <label class="benchmark-checkbox-label" for="Revenue_per_Session">
                   <p class="benchmark-checkbox-head">Revenue per Session </p>
@@ -227,7 +220,7 @@
               </div>
               <div class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Conversion_Rate" id="Conversion_Rate" />
+                  <input class="benchmark-checkbox" type="checkbox" name="Conversion_Rate" id="Conversion_Rate" v-model="reports[2].checked"  />
                 </div>
                 <label class="benchmark-checkbox-label" for="Conversion_Rate">
                   <p class="benchmark-checkbox-head">Conversion Rate </p>
@@ -235,7 +228,7 @@
               </div>
               <div class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Total_Revenue" id="Total_Revenue" />
+                  <input class="benchmark-checkbox" type="checkbox" name="Total_Revenue" id="Total_Revenue" v-model="reports[3].checked"/>
                 </div>
                 <label class="benchmark-checkbox-label" for="Total_Revenue">
                   <p class="benchmark-checkbox-head">Total Revenue </p>
@@ -243,7 +236,7 @@
               </div>
               <div class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Total_Traffic" id="Total_Traffic" />
+                  <input class="benchmark-checkbox" type="checkbox" name="Total_Traffic" id="Total_Traffic" v-model="reports[4].checked" />
                 </div>
                 <label class="benchmark-checkbox-label" for="Total_Traffic">
                   <p class="benchmark-checkbox-head">Total Traffic </p>
@@ -251,7 +244,7 @@
               </div>
               <div class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Time_on_Site" id="Time_on_Site" />
+                  <input class="benchmark-checkbox" type="checkbox" name="Time_on_Site" id="Time_on_Site" v-model="reports[5].checked" />
                 </div>
                 <label class="benchmark-checkbox-label" for="Time_on_Site">
                   <p class="benchmark-checkbox-head">Time on Site </p>
@@ -267,7 +260,7 @@
               <div class="benchmark-button">2. Report frequency</div>
               <div :class="{ 'benchmark-button': true, 'benchmark-active': currentStep === 4 }">3. Select metrics</div>
             </div>
-            <button class="benchmark-modal-button" @click="nextStep">
+            <button class="benchmark-modal-button" @click="nextStep" :class="{ 'disabled': isNextButtonDisabled }" :disabled="isNextButtonDisabled">
               <span class="benchmark-modal-button-text">Next</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 7L13 7" stroke="white" stroke-width="1.5" stroke-linecap="round" />
@@ -339,6 +332,32 @@ export default defineComponent({
     }
   },
   computed: {
+    // isNextButtonDisabled() {
+    //   if (this.currentStep === 1) {
+    //     return !this.emailSelected && !this.phoneSelected;
+    //   } else if (this.currentStep === 2) {
+    //     return !(this.selectedNotificationMethods.includes('email') || this.selectedNotificationMethods.includes('phone'));
+    //   } else if (this.currentStep === 3) {
+    //     return this.selectedNotificationId === null;
+    //   } else if (this.currentStep === 4) {
+    //     return this.reports.every(report => !report.checked);
+    //   } else {
+    //     return true;
+    //   }
+    // },
+    isNextButtonDisabled() {
+  if (this.currentStep === 1) {
+    return !this.emailSelected && !this.phoneSelected;
+  } else if (this.currentStep === 2) {
+    return !(this.selectedNotificationMethods.includes('email') || this.selectedNotificationMethods.includes('phone'));
+  } else if (this.currentStep === 3) {
+    return this.selectedNotificationId === null;
+  } else if (this.currentStep === 4) {
+    return this.reports.every(report => !report.checked);
+  } else {
+    return true;
+  }
+},
     getHeaderText() {
       if (this.emailSelected && this.phoneSelected) {
         return "Add Email & Phone to receive insights";
@@ -625,6 +644,11 @@ p {
             background-color: #e2fdec !important;
           }
         }
+      }
+
+      .benchmark-modal-button.disabled {
+        background-color: #ccc !important; 
+        cursor: not-allowed;
       }
 
       .benchmark-modal-button {
