@@ -89,13 +89,13 @@
             </div>
             <div class="benchmark-noti">
               <div v-if="selectedNotificationMethods.includes('email')" class="benchmark-input-wrapper">
-            <label class="benchmark-input-label" for="email">E-mail</label>
-            <input class="benchmark-input" type="email" name="email" id="email" placeholder="xya@examplewebsite.com" v-model="emailInput" />
-          </div>
-          <div v-if="selectedNotificationMethods.includes('phone')" class="benchmark-input-wrapper">
-            <label class="benchmark-input-label" for="phone">Phone number</label>
-            <input class="benchmark-input" type="phone" name="phone" id="phone" placeholder="8807874507" v-model="phoneInput" />
-          </div>
+              <label class="benchmark-input-label" for="email">E-mail</label>
+              <input class="benchmark-input" type="email" name="email" id="email" placeholder="xya@examplewebsite.com" v-model="emailInput" />
+            </div>
+            <div v-if="selectedNotificationMethods.includes('phone')" class="benchmark-input-wrapper">
+              <label class="benchmark-input-label" for="phone">Phone number</label>
+              <input class="benchmark-input" type="phone" name="phone" id="phone" placeholder="8807874507" v-model="phoneInput" />
+            </div>
             </div>
           </div>
         </div>
@@ -200,56 +200,15 @@
             </div>
             <p class="benchmark-title">Select as many options as you'd like.</p>
             <div class="benchmark-noti">
-              <div class="benchmark-noti-content">
+              <div v-for="report in reports" :key="report.id" class="benchmark-noti-content">
                 <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="AOV" id="AOV" v-model="reports[0].checked" />
+                  <input class="benchmark-checkbox" type="checkbox" :name="report.id" :id="report.id" v-model="report.checked" />
                 </div>
-                <label class="benchmark-checkbox-label" for="AOV">
-                  <p class="benchmark-checkbox-head">AOV</p>
+                <label class="benchmark-checkbox-label" :for="report.id">
+                  <p class="benchmark-checkbox-head">{{ report.label }}</p>
                 </label>
               </div>
-              <div class="benchmark-noti-content">
-                <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Revenue_per_Session" id="Revenue_per_Session" v-model="reports[1].checked"/>
-                    
-                </div>
-                <label class="benchmark-checkbox-label" for="Revenue_per_Session">
-                  <p class="benchmark-checkbox-head">Revenue per Session </p>
-                </label>
-              </div>
-              <div class="benchmark-noti-content">
-                <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Conversion_Rate" id="Conversion_Rate" v-model="reports[2].checked"  />
-                </div>
-                <label class="benchmark-checkbox-label" for="Conversion_Rate">
-                  <p class="benchmark-checkbox-head">Conversion Rate </p>
-                </label>
-              </div>
-              <div class="benchmark-noti-content">
-                <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Total_Revenue" id="Total_Revenue" v-model="reports[3].checked"/>
-                </div>
-                <label class="benchmark-checkbox-label" for="Total_Revenue">
-                  <p class="benchmark-checkbox-head">Total Revenue </p>
-                </label>
-              </div>
-              <div class="benchmark-noti-content">
-                <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Total_Traffic" id="Total_Traffic" v-model="reports[4].checked" />
-                </div>
-                <label class="benchmark-checkbox-label" for="Total_Traffic">
-                  <p class="benchmark-checkbox-head">Total Traffic </p>
-                </label>
-              </div>
-              <div class="benchmark-noti-content">
-                <div class="benchmark-checkbox-wrapper">
-                  <input class="benchmark-checkbox" type="checkbox" name="Time_on_Site" id="Time_on_Site" v-model="reports[5].checked" />
-                </div>
-                <label class="benchmark-checkbox-label" for="Time_on_Site">
-                  <p class="benchmark-checkbox-head">Time on Site </p>
-                </label>
-              </div>
-            </div>
+          </div>
           </div>
         </div>
         <div class="benchmark-modal-footer">
@@ -301,6 +260,8 @@ export default defineComponent({
       steps: ['Set up contact', 'Add email and phone', 'Report frequency', 'Select metrics'],
       emailSelected: false,
       phoneSelected: false,
+      emailInput: "",
+      phoneInput: "",
       selectedNotificationMethods: [] as string[],
     };
   },
@@ -332,18 +293,19 @@ export default defineComponent({
   },
   computed: {
     isNextButtonDisabled() {
-  if (this.currentStep === 1) {
-    return !this.emailSelected && !this.phoneSelected;
-  } else if (this.currentStep === 2) {
-    return !(this.selectedNotificationMethods.includes('email') || this.selectedNotificationMethods.includes('phone'));
-  } else if (this.currentStep === 3) {
-    return this.selectedNotificationId === null;
-  } else if (this.currentStep === 4) {
-    return this.reports.every(report => !report.checked);
-  } else {
-    return true;
-  }
-},
+    if (this.currentStep === 1) {
+      return !this.emailSelected && !this.phoneSelected;
+    } else if (this.currentStep === 2) {
+      return (this.selectedNotificationMethods.includes('email') && !this.emailInput) ||
+           (this.selectedNotificationMethods.includes('phone') && !this.phoneInput);
+    } else if (this.currentStep === 3) {
+      return this.selectedNotificationId === null;
+    } else if (this.currentStep === 4) {
+      return this.reports.every(report => !report.checked);
+    } else {
+      return true;
+    }
+  },
     getHeaderText() {
       if (this.emailSelected && this.phoneSelected) {
         return "Add Email & Phone to receive insights";
@@ -633,8 +595,7 @@ p {
       }
 
       .benchmark-modal-button.disabled {
-        background-color: #ccc !important; 
-        cursor: not-allowed;
+        background-color: #ccc !important;
       }
 
       .benchmark-modal-button {
